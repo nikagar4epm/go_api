@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	// "github.com/nikagar4epm/go_api/internal/handlers"
+	"github.com/nikagar4epm/go_api/internal/handlers"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -17,7 +17,9 @@ func main() {
 
 	fmt.Println("Starting GO API service...")
 
-	err := http.ListenAndServe("localhost:8000", r)
+	var url = "localhost:8000"
+	fmt.Println("Listening to requests on", url)
+	err := http.ListenAndServe(url, r)
 
 	if err != nil {
 		log.Error(err)
