@@ -13,5 +13,6 @@ func Handler(r *chi.Mux) {
 		router.Use(middleware.Authorization)
 
 		router.Get("/coins", GetCoinBalance)
+		router.HandleFunc("/profile", handleClientProfile)
 	})
 }

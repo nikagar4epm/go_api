@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"github.com/nikagar4epm/go_api/internal/tools"
 	"net/http"
 )
 
@@ -13,6 +14,16 @@ type CoinBalanceResponse struct {
 	Code int
 
 	Balance int64
+}
+
+type ClientProfileParams struct {
+	Username string
+}
+
+type ClientProfileResponse struct {
+	Code int
+
+	Profile *tools.UserDetails
 }
 
 type Error struct {

@@ -36,6 +36,30 @@ var mockCoinDetails = map[string]CoinDetails{
 	},
 }
 
+var mockClientProfiles = map[string]UserDetails{
+	"alex": {
+		Email:    "alex@example.com",
+		Id:       "123",
+		Username: "alex",
+		Name:     "Alexander",
+		Token:    "123ABC",
+	},
+	"jason": {
+		Email:    "jason@example.com",
+		Id:       "456",
+		Username: "jason",
+		Name:     "Jason",
+		Token:    "456DEF",
+	},
+	"marie": {
+		Email:    "marie@example.com",
+		Id:       "789",
+		Username: "marie",
+		Name:     "Marie",
+		Token:    "789GHI",
+	},
+}
+
 func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 	time.Sleep(time.Second * 1)
 
@@ -58,6 +82,34 @@ func (d *mockDB) GetUserCoins(username string) *CoinDetails {
 	if !ok {
 		return nil
 	}
+
+	return &clientData
+}
+
+func (d *mockDB) GetUserProfile(username string) *UserDetails {
+	time.Sleep(time.Second * 1)
+
+	var clientData = UserDetails{}
+	clientData, ok := mockClientProfiles[username]
+
+	if !ok {
+		return nil
+	}
+
+	return &clientData
+}
+
+func (d *mockDB) SetUserProfile(username string, profile UserDetails) *UserDetails {
+	time.Sleep(time.Second * 1)
+
+	var clientData = UserDetails{}
+	clientData, ok := mockClientProfiles[username]
+
+	if !ok {
+		return nil
+	}
+
+	mockClientProfiles[username] = profile
 
 	return &clientData
 }
